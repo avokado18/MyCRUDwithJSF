@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+   <h2>All clients</h2>
+   <h:form>
+      <h:dataTable value="#{clientController.getAllClients()}" var="client">
+         <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{client.getId()}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Surname</f:facet>
+            #{client.getSurname()}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{client.getName()}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Patronymic</f:facet>
+            #{client.getPatronymic()}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Birthday</f:facet>
+            #{client.getBirthday()}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Account number</f:facet>
+            #{client.getAccNumber()}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Balance</f:facet>
+            #{client.getBalance()}
+         </h:column>
+      </h:dataTable>
+   </h:form>
+</h:body>
+</html>
