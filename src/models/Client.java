@@ -14,6 +14,16 @@ public class Client {
     public Client() {
     }
 
+    public Client(int id, String surname, String name, String patronymic, Date birthday, int accNumber, double balance) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.birthday = birthday;
+        this.accNumber = accNumber;
+        this.balance = balance;
+    }
+
     public int getId() {
         return id;
     }
