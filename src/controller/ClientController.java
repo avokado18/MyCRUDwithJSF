@@ -13,8 +13,10 @@ import java.util.Date;
 @RequestScoped
 public class ClientController implements Serializable{
     private static final long serialVersionUID = 1L;
-
     private ClientService clientService;
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
+    }
 
     private int id;
     private String surname;
@@ -23,6 +25,7 @@ public class ClientController implements Serializable{
     private Date birthday;
     private int accNumber;
     private double balance;
+    private boolean canEdit = false;
 
     public int getId() {
         return id;
@@ -80,13 +83,16 @@ public class ClientController implements Serializable{
         this.balance = balance;
     }
 
-    public void setClientService(ClientService clientService) {
-        this.clientService = clientService;
+    public boolean isCanEdit() {
+        return canEdit;
+    }
+
+    public void setCanEdit(boolean canEdit) {
+        this.canEdit = canEdit;
     }
 
     public ArrayList<Client> getAllClients(){
         ArrayList<Client> clients = (ArrayList) clientService.getAllClients();
-        id = clients.size() + 1;
         return clients;
 
     }
@@ -94,16 +100,42 @@ public class ClientController implements Serializable{
         clientService.deleteClient(id);
         return null;
     }
-    public String addClient() {
+    public String editClick(){
+        canEdit = true;
+        Client client = clientService.getClientById(id);
+        surname = client.getSurname();
+        name = client.getName();
+        patronymic = client.getPatronymic();
+        birthday = client.getBirthday();
+        accNumber = client.getAccNumber();
+        balance = client.getBalance();
+        return null;
+    }
+    public String saveClient() {
         Client client = new Client(id, surname, name, patronymic, birthday, accNumber, balance);
-        id = id+1;
+        System.out.println(client);
+        if (canEdit){
+            editClient(client);
+        }
+        else {
+            addClient(client);
+        }
+        id = id + 1;
         surname = null;
         name = null;
         patronymic = null;
         birthday = null;
         accNumber = 0;
         balance = 0;
+        canEdit = false;
+        return null;
+    }
+    public  String addClient(Client client){
         clientService.addClient(client);
+        return null;
+    }
+    public String editClient(Client client){
+        clientService.updateClient(client);
         return null;
     }
 }

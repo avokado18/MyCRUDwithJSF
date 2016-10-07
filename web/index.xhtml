@@ -41,6 +41,14 @@
             #{client.getBalance()}
          </h:column>
          <h:column>
+            <f:facet name="header">Edit</f:facet>
+            <h:commandButton value="Edit"
+                             action="#{clientController.editClick}">
+               <f:setPropertyActionListener
+                       target="#{clientController.id}" value="#{client.getId()}" />
+            </h:commandButton>
+         </h:column>
+         <h:column>
             <f:facet name="header">Delete</f:facet>
             <h:commandButton value="Delete"
                              action="#{clientController.deleteClient}" >
@@ -54,15 +62,15 @@
       <table>
          <tr>
             <td>ID :</td>
-            <td><h:inputText size="10" value="#{clientController.id}" /></td>
+            <td><h:inputText size="20" value="#{clientController.id}" disabled="#{clientController.canEdit}"/></td>
          </tr>
          <tr>
             <td>Surname :</td>
-            <td><h:inputText size="10" value="#{clientController.surname}" /></td>
+            <td><h:inputText size="20" value="#{clientController.surname}"/></td>
          </tr>
          <tr>
             <td>Name :</td>
-            <td><h:inputText size="10" value="#{clientController.name}" /></td>
+            <td><h:inputText size="20" value="#{clientController.name}" /></td>
          </tr>
          <tr>
             <td>Patronymic :</td>
@@ -70,22 +78,22 @@
          </tr>
          <tr>
             <td>Birthday :</td>
-            <td><h:inputText value="#{clientController.birthday}">
+            <td><h:inputText size="20" value="#{clientController.birthday}">
                <f:convertDateTime pattern="dd.MM.yyyy"/>
             </h:inputText></td>
          </tr>
          <tr>
             <td>Account number :</td>
-            <td><h:inputText size="5" value="#{clientController.accNumber}" /></td>
+            <td><h:inputText size="20" value="#{clientController.accNumber}" /></td>
          </tr>
          <tr>
             <td>Balance :</td>
-            <td><h:inputText size="10" value="#{clientController.balance}" /></td>
+            <td><h:inputText size="20" value="#{clientController.balance}" /></td>
          </tr>
          <tr>
             <td> </td>
-            <td><h:commandButton value="Add client"
-                                 action="#{clientController.addClient}" /></td>
+            <td><h:commandButton value="Save client"
+                                 action="#{clientController.saveClient}" /></td>
          </tr>
       </table>
    </h:form>
