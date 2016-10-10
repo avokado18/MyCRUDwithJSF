@@ -37,6 +37,11 @@
         <property name="clientService" ref="clientService"/>
     </bean>
 
+    <bean id="idValidator" class="controller.IdValidator">
+        <property name="clientService" ref="clientService"/>
+    </bean>
+
     <mvc:annotation-driven/>
+
     <context:component-scan base-package="controller"/>
 </beans>
