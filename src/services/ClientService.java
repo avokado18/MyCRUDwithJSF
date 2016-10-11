@@ -51,4 +51,8 @@ public class ClientService {
             session.delete(client);
         session.getTransaction().commit();
     }
+    public boolean clientExists(int id){
+        Client client = getClientById(id);
+        return client != null;
+    }
 }

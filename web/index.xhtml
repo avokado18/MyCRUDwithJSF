@@ -59,45 +59,72 @@
          <tr>
             <td>ID:</td>
             <td>
-               <h:inputText size="20" value="#{clientController.id}" disabled="#{clientController.canEdit}">
+               <h:inputText id="id" size="20" value="#{clientController.id}" disabled="#{clientController.canEdit}">
+                  <f:validator binding="#{idValidator}"/>
                </h:inputText>
+               <h:message for="id" style="color: red"/>
             </td>
          </tr>
          <tr>
             <td>Surname:</td>
-            <td><h:inputText size="20" value="#{clientController.surname}" required="true"
-               requiredMessage="Please enter username" />
-               <h:message for="#{clientController.surname}" style="color: red;" />
+            <td><h:inputText id="surname" size="20" value="#{clientController.surname}">
+               <f:validateRegex pattern="^[A-Z][a-z]+$"/>
+            </h:inputText>
+               <h:message for="surname" style="color:red" />
             </td>
          </tr>
          <tr>
             <td>Name:</td>
-            <td><h:inputText size="20" value="#{clientController.name}" /></td>
+            <td>
+               <h:inputText id="name" size="20" value="#{clientController.name}">
+                  <f:validateRegex pattern="^[A-Z][a-z]+$"/>
+               </h:inputText>
+               <h:message for="name" style="color:red" />
+            </td>
          </tr>
          <tr>
             <td>Patronymic:</td>
-            <td><h:inputText size="20" value="#{clientController.patronymic}" /></td>
+            <td>
+               <h:inputText id="patronymic" size="20" value="#{clientController.patronymic}">
+                  <f:validateRegex pattern="^[A-Z][a-z]+$"/>
+               </h:inputText>
+               <h:message for="name" style="color:red" />
+            </td>
          </tr>
          <tr>
             <td>Birthday:</td>
-            <td><h:inputText size="20" value="#{clientController.birthday}">
-               <f:convertDateTime pattern="dd.MM.yyyy" timeZone="Europe/Moscow"/>
-            </h:inputText></td>
+            <td>
+               <h:inputText id="birthday" size="20" value="#{clientController.birthday}">
+                  <f:validator validatorId="dateValidator"/>
+                  <f:convertDateTime pattern="dd.MM.yyyy" timeZone="Europe/Moscow"/>
+               </h:inputText>
+               <h:message for="birthday" style="color:red" />
+            </td>
          </tr>
          <tr>
             <td>Account number:</td>
-            <td><h:inputText size="20" value="#{clientController.accNumber}" /></td>
+            <td>
+               <h:inputText id="accNum" size="20" value="#{clientController.accNumber}" >
+                  <f:validateLongRange minimum="0"/>
+               </h:inputText>
+               <h:message for="accNum" style="color:red" />
+            </td>
          </tr>
          <tr>
             <td>Balance:</td>
-            <td><h:inputText size="20" value="#{clientController.balance}" /></td>
+            <td>
+               <h:inputText id="balance" size="20" value="#{clientController.balance}" >
+                  <f:validateLongRange minimum="0"/>
+               </h:inputText>
+               <h:message for="balance" style="color:red" />
+            </td>
          </tr>
          <tr>
             <td> </td>
-            <td><h:commandButton value="Save client" action="#{clientController.saveClient}" /></td>
+            <td><h:commandButton value="Save client" action="#{clientController.saveClient}"/></td>
          </tr>
       </table>
-
    </h:form>
+
 </h:body>
 </html>

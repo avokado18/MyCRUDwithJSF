@@ -10,16 +10,17 @@ import javax.faces.validator.ValidatorException;
 
 import javax.faces.validator.FacesValidator;
 
-@FacesValidator("controller.IdValidator")
+@FacesValidator("idValidator")
 public class IdValidator implements Validator {
     private ClientService clientService;
     public void setClientService(ClientService clientService) {
         this.clientService = clientService;
     }
+
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
         String id = o.toString();
-        if (clientService.getClientById(Integer.parseInt(id)) != null) {
+        if (clientService.clientExists(Integer.parseInt(id))) {
             FacesMessage msg = new FacesMessage("ID validation failed", "ID already exists");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);

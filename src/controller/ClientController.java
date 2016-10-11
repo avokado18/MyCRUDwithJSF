@@ -141,7 +141,7 @@ public class ClientController implements Serializable{
         message = "Add client";
         return null;
     }
-    public  String addClient(Client client){
+    public String addClient(Client client){
         clientService.addClient(client);
         return null;
     }
@@ -149,6 +149,7 @@ public class ClientController implements Serializable{
         clientService.updateClient(client);
         return null;
     }
-
-
+    public String addClick(){
+        return null;
+    }
 }

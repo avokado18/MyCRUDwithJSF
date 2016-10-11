@@ -36,5 +36,7 @@
     <orderEntry type="library" name="Spring MVC-4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Hibernate 5.2.3-5.2.3" level="project" />
     <orderEntry type="library" name="com.sun.faces:jsf-api:2.2.13" level="project" />
+    <orderEntry type="library" name="jquery-1.12.4" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
   </component>
 </module>
